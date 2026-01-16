@@ -28,18 +28,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">date</label>
-                        <input type="date" name="appointment_date" value='{{ $date }}' class="form-control" id="date ">
+                        <input type="date" name="appointment_date" value='{{ $date ?? "" }}' class="form-control" id="date ">
                     </div>
                     <div class="mb-3">
                          <label class="form-label">Time</label><br>
                            @foreach($allTimes as $timeValue => $timeLabel)
-                              <input type="radio" id="time{{ $loop->index }}"
+                              <input type="radio" required id="time{{ $loop->index }}"
                                name="appointment_time" 
                                value="{{ $timeValue }}"
                                @if (in_array($timeValue,  $bookedTimes)) disabled @endif>
-                              <label for="time{{ $loop->index }}">{{ $timeLabel }}</label><br>
+                              <label for="time{{ $loop->index }}">{{ $timeLabel }}</label>
                                @if(in_array($timeValue,  $bookedTimes))
-                              <span class="text-danger">(محجوز)</span>
+                              <span class="text-danger">(محجوز)</span><br>
                               @endif
 
                            @endforeach

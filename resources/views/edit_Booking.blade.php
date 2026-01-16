@@ -31,7 +31,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">date</label>
-                        <input type="date" name="appointment_date" class="form-control" id="date " value="{{ $appointment->appointment_date }}">
+                        <input type="date" name="appointment_date" class="form-control" id="date " value="{{ $appointment->appointment_datetime->format('Y-m-d') }}">
                     </div>
                   <div class="mb-3">
       <div class="mb-3">
@@ -40,7 +40,7 @@
          @foreach($times as $value => $label)
             <div class="form-check">
               <input class="form-check-input" type="radio" name="appointment_time" value="{{ $value }}"
-               {{ old('appointment_time', $appointment->appointment_time) == $value ? 'checked' : '' }}>
+               {{ old('appointment_time', $appointment->appointment_datetime->format('H:i:s')) == $value ? 'checked' : '' }}>
               <label class="form-check-label">{{ $label }}</label>
              </div>
          @endforeach

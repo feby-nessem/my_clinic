@@ -26,12 +26,12 @@
         </thead>
         <tbody>
         @foreach ($appointments as $appointment )
-                 <tr>
+             <tr>
                 <td>{{ $appointment->name}}</td>
                 <td>{{ $appointment->phone }}</td>
-                <td>{{ $appointment->appointment_date}}</td>
-                <td>{{ \Carbon\Carbon::parse($appointment->appointment_time)->format('g:i A') }}</td>
-                <td>{{ $appointment->status}}</td>
+                <td> {{ $appointment->appointment_datetime ? $appointment->appointment_datetime->format('Y-m-d')  : '—' }}</td>
+                <td>{{ $appointment->appointment_datetime? $appointment->appointment_datetime->format('H:i ')  : '—' }}</td>
+                <td>{{ $appointment->status }}</td>
                 <td>
                     <a href="{{ route('booking.edit', $appointment->id) }}" 
                         class="btn btn-primary">  Edit 
